@@ -20,7 +20,16 @@ class App extends Component {
   axios
    .post('http://localhost:3333/smurfs', newObj)
    .then(res => {
-    console.log(res);
+    // console.log(res);
+    this.setState({ smurfs: res.data });
+    // this.props.history.push('/');
+    // window.location.href = 'http://localhost:3000/';
+    window.location.href = '/';
+   })
+   .catch(err => {
+    console.log(err);
+   });
+ };
     this.setState({ smurfs: res.data });
    })
    .catch(err => {
