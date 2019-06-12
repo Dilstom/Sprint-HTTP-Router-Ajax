@@ -20,11 +20,7 @@ class App extends Component {
   axios
    .post('http://localhost:3333/smurfs', newObj)
    .then(res => {
-    // console.log(res);
     this.setState({ smurfs: res.data });
-    // this.props.history.push('/');
-    // window.location.href = 'http://localhost:3000/';
-    window.location.href = '/';
    })
    .catch(err => {
     console.log(err);
@@ -37,6 +33,17 @@ class App extends Component {
    .then(res => {
     // console.log(res);
     this.setState({ smurfs: res.data });
+   })
+   .catch(err => {
+    console.log(err);
+   });
+ };
+
+ handleUpdate = (smurf, id) => {
+  axios
+   .put(`http://localhost:3333/smurfs/${id}`, smurf)
+   .then(res => {
+    this.setState({ smurfs: res.data, updateForm: false });
    })
    .catch(err => {
     console.log(err);
@@ -64,7 +71,12 @@ class App extends Component {
      exact
      path="/"
      render={props => (
-      <Smurfs smurfs={this.state.smurfs} handleDelete={this.handleDelete} />
+      <Smurfs
+       smurfs={this.state.smurfs}
+       handleDelete={this.handleDelete}
+       handleUpdate={this.handleUpdate}
+       updateForm={this.state.updateForm}
+      />
      )}
     />
     <Route
