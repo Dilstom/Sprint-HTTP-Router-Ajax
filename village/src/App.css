@@ -19,3 +19,13 @@ li {
 .navBar {
  padding: 20px 0;
 }
+
+.updateForm {
+ width: 200px;
+ margin: 0 auto;
+}
+.updateForm input {
+ font-size: 1.2rem;
+ margin: 5px;
+ text-align: center;
+}
