@@ -11,6 +11,37 @@ class Smurf extends Component {
  };
  render() {
   return (
+   <div>
+    {this.state.updateForm ? (
+     <div className="updateForm">
+      <form onSubmit={this.updateSmurf}>
+       <input
+        onChange={this.handleInputChange}
+        placeholder="name"
+        value={this.state.name}
+        name="name"
+       />
+       <input
+        onChange={this.handleInputChange}
+        placeholder="age"
+        value={this.state.age}
+        name="age"
+       />
+       <input
+        onChange={this.handleInputChange}
+        placeholder="height"
+        value={this.state.height}
+        name="height"
+       />
+       <button type="submit" onClick={this.handleUpdate}>
+        Update
+       </button>
+       <button type="submit" onClick={this.handleCancel}>
+        Cancel
+       </button>
+      </form>
+     </div>
+    ) : (
    <div className="Smurf">
     <h3>{this.props.name}</h3>
     <strong>{this.props.height} tall</strong>
