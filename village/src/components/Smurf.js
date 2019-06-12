@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Smurf = props => {
+class Smurf extends Component {
+ constructor() {
+  super();
+  this.state = {};
+ }
+ handleDelete = e => {
+  e.preventDefault();
+  this.props.handleDelete(this.props.id);
+ };
+ render() {
   return (
-    <div className="Smurf">
-      <h3>{props.name}</h3>
-      <strong>{props.height} tall</strong>
-      <p>{props.age} smurf years old</p>
-    </div>
+   <div className="Smurf">
+    <h3>{this.props.name}</h3>
+    <strong>{this.props.height} tall</strong>
+    <p>{this.props.age} smurf years old</p>
+    <button onClick={this.handleDelete}>Delete</button>
+   </div>
   );
-};
+ }
+}
 
 Smurf.defaultProps = {
-  name: '',
-  height: '',
-  age: ''
+ name: '',
+ height: '',
+ age: '',
 };
 
 export default Smurf;
-
