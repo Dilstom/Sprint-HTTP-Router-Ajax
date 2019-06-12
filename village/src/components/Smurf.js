@@ -3,12 +3,52 @@ import React, { Component } from 'react';
 class Smurf extends Component {
  constructor() {
   super();
-  this.state = {};
+  this.state = {
+   name: '',
+   age: '',
+   height: '',
+   updateForm: false,
+  };
  }
+ componentDidMount() {
+  this.setState({
+   name: this.props.name,
+   age: this.props.age,
+   height: this.props.height,
+  });
+ }
+
  handleDelete = e => {
   e.preventDefault();
   this.props.handleDelete(this.props.id);
  };
+
+ handleUpdate = e => {
+  e.preventDefault();
+  const newObj = {
+   name: this.state.name,
+   age: this.state.age,
+   height: this.state.height,
+  };
+  this.props.handleUpdate(newObj, this.props.id);
+  this.setState({ updateForm: false });
+ };
+
+ updateFlag = e => {
+  e.preventDefault();
+  this.setState({ updateForm: true });
+  //    this.props.handleDelete(this.props.id);
+ };
+
+ handleCancel = e => {
+  e.preventDefault();
+  this.setState({ updateForm: false });
+ };
+
+ handleInputChange = e => {
+  this.setState({ [e.target.name]: e.target.value });
+ };
+
  render() {
   return (
    <div>
@@ -42,11 +82,14 @@ class Smurf extends Component {
       </form>
      </div>
     ) : (
-   <div className="Smurf">
-    <h3>{this.props.name}</h3>
-    <strong>{this.props.height} tall</strong>
-    <p>{this.props.age} smurf years old</p>
-    <button onClick={this.handleDelete}>Delete</button>
+     <div className="Smurf">
+      <h3>{this.props.name}</h3>
+      <strong>{this.props.height} tall</strong>
+      <p>{this.props.age} smurf years old</p>
+      <button onClick={this.handleDelete}>Delete</button>
+      <button onClick={this.updateFlag}>Update</button>
+     </div>
+    )}
    </div>
   );
  }
