@@ -1,4 +1,15 @@
 import React, { Component } from 'react';
+import {
+ Col,
+ Button,
+ Form,
+ FormGroup,
+ Label,
+ Input,
+ Card,
+ CardTitle,
+ CardText,
+} from 'reactstrap';
 
 class Smurf extends Component {
  constructor() {
@@ -54,40 +65,70 @@ class Smurf extends Component {
    <div>
     {this.state.updateForm ? (
      <div className="updateForm">
-      <form onSubmit={this.updateSmurf}>
-       <input
-        onChange={this.handleInputChange}
-        placeholder="name"
-        value={this.state.name}
-        name="name"
-       />
-       <input
-        onChange={this.handleInputChange}
-        placeholder="age"
-        value={this.state.age}
-        name="age"
-       />
-       <input
-        onChange={this.handleInputChange}
-        placeholder="height"
-        value={this.state.height}
-        name="height"
-       />
+      <Form onSubmit={this.updateSmurf}>
+       <FormGroup row>
+        <Label for="name" sm={2}>
+         Name
+        </Label>
+        <Col sm={10}>
+         <Input
+          onChange={this.handleInputChange}
+          placeholder="name"
+          value={this.state.name}
+          name="name"
+          id="name"
+         />
+        </Col>
+       </FormGroup>
+       <FormGroup row>
+        <Label for="height" sm={2}>
+         Height
+        </Label>
+        <Col sm={10}>
+         <Input
+          onChange={this.handleInputChange}
+          placeholder="height"
+          value={this.state.height}
+          name="height"
+          id="height"
+         />
+        </Col>
+       </FormGroup>
+       <FormGroup row>
+        <Label for="age" sm={2}>
+         Age
+        </Label>
+        <Col sm={10}>
+         <Input
+          onChange={this.handleInputChange}
+          placeholder="age"
+          value={this.state.age}
+          name="age"
+          id="age"
+         />
+        </Col>
+       </FormGroup>
        <button type="submit" onClick={this.handleUpdate}>
         Update
        </button>
        <button type="submit" onClick={this.handleCancel}>
         Cancel
        </button>
-      </form>
+      </Form>
      </div>
     ) : (
      <div className="Smurf">
-      <h3>{this.props.name}</h3>
-      <strong>{this.props.height} tall</strong>
-      <p>{this.props.age} smurf years old</p>
-      <button onClick={this.handleDelete}>Delete</button>
-      <button onClick={this.updateFlag}>Update</button>
+      <Col>
+       <Card body>
+        <CardTitle>{this.props.name}</CardTitle>
+        <CardText>{this.props.height}</CardText>
+        <CardText>{this.props.age}</CardText>
+        <div className="displayFlex">
+         <Button onClick={this.updateFlag}>Update</Button>
+         <Button onClick={this.handleDelete}>Delete</Button>
+        </div>
+       </Card>
+      </Col>
      </div>
     )}
    </div>

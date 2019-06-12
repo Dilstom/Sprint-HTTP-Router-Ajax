@@ -21,11 +21,25 @@ li {
 }
 
 .updateForm {
- width: 200px;
+ width: 40%;
  margin: 0 auto;
 }
 .updateForm input {
  font-size: 1.2rem;
  margin: 5px;
  text-align: center;
+}
+
+.displayFlex {
+ display: flex;
+}
+.displayFlex button {
+ display: flex;
+ margin: 0 auto;
+}
+
+.Smurf {
+ /* margin-top: 20px; */
+ margin: 20px auto;
+ max-width: 40%;
 }
